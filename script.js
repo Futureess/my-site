@@ -218,20 +218,21 @@ window.addEventListener('scroll', () => {
     
     // Работаем только пока hero виден на экране
     if (scrolled < heroHeight) {
+      // Считаем прогресс скролла: 0 (вверху) → 1 (внизу hero)
+      const progress = scrolled / heroHeight;
+      
+      // Фокус фото движется от 30% до 70% по вертикали
+      const focusY = 30 + progress * 40;
+      
       slides.forEach(slide => {
-        // Фото движется в 2 раза медленнее скролла
-        const yPos = scrolled * 0.4;
-        // Лёгкое затемнение при скролле
-        const opacity = 1 - (scrolled / heroHeight) * 0.5;
-        
-        slide.style.transform = `translateY(${yPos}px) scale(${1 + scrolled * 0.0003})`;
+        slide.style.backgroundPosition = `center ${focusY}%`;
       });
 
       // Контент уплывает вверх и исчезает
       const heroContent = document.querySelector('.hero-content');
       if (heroContent) {
         heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
-        heroContent.style.opacity = 1 - (scrolled / heroHeight) * 1.5;
+        heroContent.style.opacity = 1 - progress * 1.5;
       }
     }
     
@@ -245,4 +246,4 @@ window.addEventListener('scroll', () => {
       ticking = true;
     }
   }, { passive: true });
-})();
+})(); 
