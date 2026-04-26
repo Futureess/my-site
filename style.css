@@ -56,6 +56,7 @@ textarea {
   margin: 0 auto;
 }
 
+/* ========== TOP BAR ========== */
 .top-bar {
   background: #ffffff;
   color: var(--text-muted);
@@ -86,6 +87,7 @@ textarea {
   color: var(--text);
 }
 
+/* ========== HEADER ========== */
 .header {
   position: sticky;
   top: 0;
@@ -116,7 +118,6 @@ textarea {
   font-weight: 700;
   font-size: 1.15rem;
   color: var(--text);
-  margin-left: -300px;
 }
 
 .logo span {
@@ -179,6 +180,7 @@ textarea {
   transform: translateY(-11px) rotate(-45deg);
 }
 
+/* ========== HERO ========== */
 .hero {
   position: relative;
   min-height: 88vh;
@@ -194,30 +196,12 @@ textarea {
   position: absolute;
   inset: 0;
   background-size: cover;
-  background-position: center;
+  background-position: center 50%;
   background-repeat: no-repeat;
   opacity: 0;
-  transition: opacity 0.8s ease;
-  will-change: transform, opacity;
+  transition: opacity 0.8s ease, background-position 0.05s linear;
+  will-change: background-position, opacity;
 }
-
-/* Ken Burns — плавный зум активного слайда */
-.hero-slide.active {
-  animation: kenBurns 20s ease-in-out infinite;
-}
-
-@keyframes kenBurns {
-  0% {
-    transform: scale(1) translate(0, 0);
-  }
-  50% {
-    transform: scale(1.1) translate(-1%, -1%);
-  }
-  100% {
-    transform: scale(1) translate(0, 0);
-  }
-}
-
 
 .hero-slide.active {
   opacity: 1;
@@ -261,6 +245,7 @@ textarea {
   font-size: 1rem;
 }
 
+/* ========== BUTTONS ========== */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -272,6 +257,7 @@ textarea {
   color: var(--text-light);
   font-weight: 600;
   transition: transform var(--transition), background var(--transition);
+  cursor: pointer;
 }
 
 .btn:hover {
@@ -289,6 +275,17 @@ textarea {
   background: rgba(31, 41, 55, 0.08);
 }
 
+.btn-sm {
+  padding: 0.75rem 1.4rem;
+  background: var(--accent);
+  color: var(--text-light);
+}
+
+.btn-full {
+  width: 100%;
+}
+
+/* ========== HERO ARROWS & DOTS ========== */
 .hero-arrows,
 .hero-dots {
   position: absolute;
@@ -297,22 +294,32 @@ textarea {
   display: flex;
   align-items: center;
   gap: 1rem;
+  z-index: 5;
 }
 
 .hero-arrows {
   bottom: 2.5rem;
 }
 
+.hero-dots {
+  bottom: 1rem;
+}
+
 .hero-arrow {
   width: 48px;
   height: 48px;
   border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.85);
-  background: rgba(15,23,42,0.45);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  background: rgba(15, 23, 42, 0.45);
   color: var(--text-light);
   cursor: pointer;
   font-size: 1.25rem;
   transition: transform var(--transition), background var(--transition);
+}
+
+.hero-arrow:hover {
+  transform: scale(1.05);
+  background: rgba(15, 23, 42, 0.7);
 }
 
 .hero-dot,
@@ -334,35 +341,7 @@ textarea {
   transform: scale(1.1);
 }
 
-.hero-dots {
-  bottom: 1rem;
-}
-
-.hero-arrow:hover {
-  transform: scale(1.05);
-  background: rgba(15,23,42,0.7);
-}
-
-.hero-dots {
-  bottom: 1rem;
-}
-
-.hero-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.8);
-  background: transparent;
-  cursor: pointer;
-  transition: background var(--transition), transform var(--transition);
-}
-
-.hero-dot.active,
-.hero-dot:hover {
-  background: rgba(255,255,255,0.95);
-  transform: scale(1.1);
-}
-
+/* ========== SECTIONS ========== */
 .section {
   padding: 4rem 0;
 }
@@ -391,6 +370,7 @@ textarea {
   text-align: center;
 }
 
+/* ========== INTRO ========== */
 .intro-grid,
 .farm-grid,
 .experience-grid,
@@ -411,10 +391,11 @@ textarea {
 }
 
 .intro-text p {
- color: #1a1a1a;
+  color: #1a1a1a;
   max-width: 620px;
 }
 
+/* ========== PRODUCTS ========== */
 .products {
   background: #111827;
   color: #f8fafc;
@@ -422,19 +403,19 @@ textarea {
 
 .products .section-sub,
 .products .section-title.light {
-  color: rgba(255,255,255,0.78);
+  color: rgba(255, 255, 255, 0.78);
 }
 
-.products-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:24px;
-    margin-top:48px;
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 48px;
 }
 
 .product-card {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius);
   overflow: hidden;
   display: flex;
@@ -449,7 +430,6 @@ textarea {
   width: 100%;
   display: block;
 }
-
 
 .product-badge {
   position: absolute;
@@ -495,17 +475,16 @@ textarea {
   font-weight: 700;
 }
 
-.btn-sm {
-  padding: 0.75rem 1.4rem;
-  background: var(--accent);
-  color: var(--text-light);
-}
-
+/* ========== PARALLAX (Our Commitment) ========== */
 .parallax {
   position: relative;
   background-size: cover;
-  background-position: center;
+  background-position: center 50%;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
   padding: 6rem 0;
+  transition: background-position 0.05s linear;
+  will-change: background-position;
 }
 
 .parallax-overlay {
@@ -518,6 +497,7 @@ textarea {
   text-align: center;
 }
 
+/* ========== STATS ========== */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -527,7 +507,7 @@ textarea {
 
 .stat {
   padding: 2rem;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
   border-radius: var(--radius);
 }
 
@@ -539,10 +519,11 @@ textarea {
 }
 
 .stat-label {
-  color: rgba(255,255,255,0.75);
+  color: rgba(255, 255, 255, 0.75);
   margin-top: 0.75rem;
 }
 
+/* ========== FARM ========== */
 .farm-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
@@ -564,6 +545,7 @@ textarea {
   margin: 0 0 1rem;
 }
 
+/* ========== EXPERIENCE ========== */
 .experience {
   background: #111827;
   color: #f8fafc;
@@ -590,9 +572,10 @@ textarea {
   margin: 1.75rem 0;
   padding-left: 1.35rem;
   list-style: disc;
-  color: rgba(248,250,252,0.78);
+  color: rgba(248, 250, 252, 0.78);
 }
 
+/* ========== GALLERY ========== */
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -615,6 +598,7 @@ textarea {
   object-fit: cover;
 }
 
+/* ========== TESTIMONIALS ========== */
 .testimonials {
   background: #111827;
   color: #f8fafc;
@@ -628,8 +612,8 @@ textarea {
 }
 
 .testimonial {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius);
   padding: 2rem;
 }
@@ -655,6 +639,7 @@ textarea {
   color: rgba(248, 250, 252, 0.65);
 }
 
+/* ========== CONTACT ========== */
 .contact-grid {
   grid-template-columns: 1fr 1.2fr;
   gap: 2rem;
@@ -721,10 +706,7 @@ textarea {
   min-height: 140px;
 }
 
-.btn-full {
-  width: 100%;
-}
-
+/* ========== MAP ========== */
 .map iframe {
   border: 0;
   display: block;
@@ -732,6 +714,7 @@ textarea {
   min-height: 380px;
 }
 
+/* ========== FOOTER ========== */
 .footer {
   background: #111827;
   color: #f8fafc;
@@ -783,12 +766,13 @@ textarea {
 
 .footer-bottom {
   margin-top: 2rem;
-  border-top: 1px solid rgba(255,255,255,0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   padding-top: 1.5rem;
   text-align: center;
   color: rgba(248, 250, 252, 0.6);
 }
 
+/* ========== BACK TO TOP ========== */
 .back-top {
   position: fixed;
   right: 1.5rem;
@@ -812,6 +796,7 @@ textarea {
   display: inline-flex;
 }
 
+/* ========== RESPONSIVE ========== */
 @media (max-width: 1024px) {
   .products-grid,
   .stats-grid,
@@ -835,12 +820,12 @@ textarea {
     top: 100%;
     left: 0;
     right: 0;
-    background: rgba(255,255,255,0.98);
+    background: rgba(255, 255, 255, 0.98);
     flex-direction: column;
     align-items: flex-start;
     padding: 1.5rem 1.5rem 2rem;
     gap: 1rem;
-    border-bottom: 1px solid rgba(229,231,235,0.9);
+    border-bottom: 1px solid rgba(229, 231, 235, 0.9);
     transform: translateY(-100%);
     opacity: 0;
     transition: transform var(--transition), opacity var(--transition);
@@ -910,4 +895,4 @@ textarea {
   .product-card {
     min-height: 100%;
   }
-}
+ }
