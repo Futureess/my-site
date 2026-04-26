@@ -215,13 +215,13 @@ button {
 }
 
 .btn-outline {
-    color: var(--primary);
-    border-color: var(--primary);
+    color: var(--text);
+    border-color: rgba(31, 41, 55, 0.18);
 }
 
 .btn-outline:hover {
-    background: var(--primary);
-    color: var(--white);
+    background: rgba(31, 41, 55, 0.08);
+    color: var(--text);
 }
 
 .full-width {

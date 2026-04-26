@@ -261,12 +261,12 @@ textarea {
 
 .btn-outline {
   background: transparent;
-  color: var(--text-light);
-  border-color: rgba(255, 255, 255, 0.85);
+  color: var(--text);
+  border-color: rgba(31, 41, 55, 0.18);
 }
 
 .btn-outline:hover {
-  background: rgba(255,255,255,0.12);
+  background: rgba(31, 41, 55, 0.08);
 }
 
 .hero-arrows,
@@ -424,6 +424,12 @@ textarea {
 .product-img {
   position: relative;
 }
+
+.product-img img {
+  width: 100%;
+  display: block;
+}
+
 
 .product-badge {
   position: absolute;
