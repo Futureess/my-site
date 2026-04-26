@@ -204,3 +204,45 @@ window.addEventListener('scroll', () => {
         }
     });
 });
+// ===== PARALLAX ЭФФЕКТ ПРИ СКРОЛЛЕ =====
+(function() {
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+
+  let ticking = false;
+
+  function updateParallax() {
+    const scrolled = window.pageYOffset;
+    const slides = document.querySelectorAll('.hero-slide');
+    const heroHeight = hero.offsetHeight;
+    
+    // Работаем только пока hero виден на экране
+    if (scrolled < heroHeight) {
+      slides.forEach(slide => {
+        // Фото движется в 2 раза медленнее скролла
+        const yPos = scrolled * 0.4;
+        // Лёгкое затемнение при скролле
+        const opacity = 1 - (scrolled / heroHeight) * 0.5;
+        
+        slide.style.transform = `translateY(${yPos}px) scale(${1 + scrolled * 0.0003})`;
+      });
+
+      // Контент уплывает вверх и исчезает
+      const heroContent = document.querySelector('.hero-content');
+      if (heroContent) {
+        heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
+        heroContent.style.opacity = 1 - (scrolled / heroHeight) * 1.5;
+      }
+    }
+    
+    ticking = false;
+  }
+
+  // requestAnimationFrame для плавности (работает и на мобильных)
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(updateParallax);
+      ticking = true;
+    }
+  }, { passive: true });
+})();
