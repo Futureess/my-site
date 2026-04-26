@@ -193,13 +193,12 @@ textarea {
 .hero-slide {
   position: absolute;
   inset: 0;
-  background-size: contain;        /* ← изменено: показывать фото целиком */
+  background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;    /* ← добавлено: не повторять фото */
-  background-color: #0f172a;       /* ← добавлено: тёмный фон по бокам */
   opacity: 0;
   transition: opacity 0.8s ease;
 }
+
 
 .hero-slide.active {
   opacity: 1;
